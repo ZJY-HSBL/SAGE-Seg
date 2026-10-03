@@ -1,0 +1,44 @@
+project:
+  name: SAGE-Seg-Cityscapes
+  output_dir: runs/SAGE-Seg-Cityscapes
+
+data:
+  dataset: cityscapes
+  root: /path/to/cityscapes
+  labeled_list: splits/cityscapes/labeled_1_8.txt
+  unlabeled_list: splits/cityscapes/unlabeled_1_8.txt
+  num_classes: 19
+  ignore_index: 255
+  crop_size: [512, 1024]
+  scale_range: [0.5, 2.0]
+  hflip_prob: 0.5
+  workers: 4
+
+model:
+  backbone: resnet101
+  pretrained_backbone: true
+  output_stride: 16
+  aspp_channels: 256
+
+ssl:
+  ema_decay: 0.99
+  consistency_threshold: 0.7
+  area_threshold: 32
+  unsupervised_weight: 1.0
+  weak_strength: 0.08
+
+train:
+  epochs: 190
+  batch_size: 16
+  lr: 0.005
+  head_lr_multiplier: 10.0
+  momentum: 0.9
+  weight_decay: 0.00001
+  poly_power: 0.9
+  seed: 0
+  amp: true
+  log_interval: 20
+  save_every: 10
+
+validation:
+  batch_size: 1

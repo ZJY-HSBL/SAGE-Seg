@@ -1,0 +1,44 @@
+project:
+  name: SAGE-Seg-VOC
+  output_dir: runs/SAGE-Seg-VOC
+
+data:
+  dataset: voc
+  root: /path/to/VOC2012
+  labeled_list: splits/voc/labeled_1_8.txt
+  unlabeled_list: splits/voc/unlabeled_1_8.txt
+  num_classes: 21
+  ignore_index: 255
+  crop_size: [512, 512]
+  scale_range: [0.5, 2.0]
+  hflip_prob: 0.5
+  workers: 4
+
+model:
+  backbone: resnet101
+  pretrained_backbone: true
+  output_stride: 16
+  aspp_channels: 256
+
+ssl:
+  ema_decay: 0.99
+  consistency_threshold: 0.7
+  area_threshold: 16
+  unsupervised_weight: 1.5
+  weak_strength: 0.08
+
+train:
+  epochs: 80
+  batch_size: 16
+  lr: 0.001
+  head_lr_multiplier: 10.0
+  momentum: 0.9
+  weight_decay: 0.00001
+  poly_power: 0.9
+  seed: 0
+  amp: true
+  log_interval: 20
+  save_every: 10
+
+validation:
+  batch_size: 1
