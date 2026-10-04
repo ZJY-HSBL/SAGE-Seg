@@ -84,7 +84,7 @@ cd SAGE-Seg
 python -m venv .venv
 # Windows: .venv\Scripts\activate
 # Linux/macOS: source .venv/bin/activate
-pip install -r requirements.txt
+pip install -e .
 ```
 
 A CUDA-enabled PyTorch installation is recommended for full training. CPU execution is sufficient for unit tests and small-scale functional checks.

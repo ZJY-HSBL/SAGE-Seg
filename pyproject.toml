@@ -20,6 +20,9 @@ dependencies = [
   "tensorboard>=2.14",
 ]
 
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
 [tool.setuptools.packages.find]
 include = ["sage_seg*"]
 
