@@ -79,7 +79,7 @@ SAGE-Seg/
 ## Installation · 安装
 
 ```bash
-git clone <your-repository-url>
+git clone https://github.com/ZJY-HSBL/SAGE-Seg.git
 cd SAGE-Seg
 python -m venv .venv
 # Windows: .venv\Scripts\activate
